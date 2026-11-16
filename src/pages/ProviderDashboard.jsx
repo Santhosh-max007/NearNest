@@ -85,7 +85,7 @@ function ProviderDashboard() {
       setBusinessError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/services/my",
+        "/api/services/my",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -180,7 +180,7 @@ function ProviderDashboard() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/services",
+        "/api/services",
         {
           method: "POST",
           headers: {
@@ -248,7 +248,7 @@ function ProviderDashboard() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/services/${editingBusiness.service_id}`,
+        `/api/services/${editingBusiness.service_id}`,
         {
           method: "PUT",
           headers: {

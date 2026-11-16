@@ -184,7 +184,7 @@ function HomePage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/services"
+        "/api/services"
       );
 
       const data = await response.json();
