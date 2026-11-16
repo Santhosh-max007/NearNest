@@ -9,6 +9,22 @@ const adminRoutes = require("./routes/admin");
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true }));
+
+// Ensure raw Buffer/string bodies from Netlify serverless-http are parsed into JSON objects
+app.use((req, res, next) => {
+  if (Buffer.isBuffer(req.body)) {
+    try {
+      req.body = JSON.parse(req.body.toString("utf8"));
+    } catch (e) {}
+  } else if (typeof req.body === "string" && req.body.trim().length > 0) {
+    try {
+      req.body = JSON.parse(req.body);
+    } catch (e) {}
+  }
+  next();
+});
+
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoutes);

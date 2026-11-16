@@ -18,7 +18,7 @@ function AdminDashboard() {
   const fetchBusinesses = useCallback(async () => {
     try {
       const response = await fetch(
-        "/api/admin/businesses",
+        "http://localhost:5000/api/admin/businesses",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ function AdminDashboard() {
 
     try {
       const response = await fetch(
-        `/api/admin/businesses/${serviceId}/status`,
+        `http://localhost:5000/api/admin/businesses/${serviceId}/status`,
         {
           method: "PATCH",
           headers: {
@@ -105,7 +105,7 @@ function AdminDashboard() {
 
     try {
       const response = await fetch(
-        `/api/admin/businesses/${serviceId}/verification`,
+        `http://localhost:5000/api/admin/businesses/${serviceId}/verification`,
         {
           method: "PATCH",
           headers: {
